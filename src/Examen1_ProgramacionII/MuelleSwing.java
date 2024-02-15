@@ -39,11 +39,17 @@ public class MuelleSwing extends javax.swing.JFrame {
         AgregarBarco = new javax.swing.JPanel();
         jButton10 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         AgregarElemento = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         VaciarBarco = new javax.swing.JPanel();
@@ -150,23 +156,59 @@ public class MuelleSwing extends javax.swing.JFrame {
         });
         AgregarBarco.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 140, 40));
 
+        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField3.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
+        AgregarBarco.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 160, -1));
+
+        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField2.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
+        AgregarBarco.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 110, -1));
+
+        jLabel6.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("PRECIO DEL BOLETO:");
+        AgregarBarco.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
+
         jLabel2.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("NOMBRE DEL BARCO:");
-        AgregarBarco.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+        jLabel2.setText("TIPOS:");
+        AgregarBarco.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("AGREGAR BARCO");
         AgregarBarco.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
+        jComboBox2.setBackground(new java.awt.Color(153, 0, 153));
+        jComboBox2.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        jComboBox2.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PEZ", "CAMARON", "LANGOSTA", " " }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+        AgregarBarco.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 190, -1));
+
         jComboBox1.setBackground(new java.awt.Color(153, 0, 153));
         jComboBox1.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "‏‏‎ ‎", "PESQUERO", "PASAJERO" }));
-        jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jComboBox1KeyReleased(evt);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
             }
         });
         AgregarBarco.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 190, -1));
@@ -180,6 +222,16 @@ public class MuelleSwing extends javax.swing.JFrame {
         jTextField1.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(0, 0, 0));
         AgregarBarco.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 160, -1));
+
+        jLabel5.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("NOMBRE DEL BARCO:");
+        AgregarBarco.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("CANTIDAD DE PASAJEROS:");
+        AgregarBarco.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
         jPanel.add(AgregarBarco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 470));
 
@@ -256,6 +308,7 @@ public class MuelleSwing extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         AgregarBarco.setVisible(true);
+        jComboBox1.setSelectedIndex(0);
         MenuPrincipal.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -299,20 +352,89 @@ public class MuelleSwing extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
+        if (buscarBarco(jTextField1.getText()) != null) {
+            JOptionPane.showMessageDialog(null, "El barco ya existe.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            
+            return;
+        } else {
+            if(jComboBox1.getSelectedIndex()==1){
+                if(jComboBox2.getSelectedIndex()==0){
+                   BarcoPesquero barcoPesquero = new BarcoPesquero(jTextField1.getText(), TipoPesquero.PEZ);
+                   barcos.add(barcoPesquero); 
+                   JOptionPane.showMessageDialog(null, "¡Barco Agregado Exitosamente!");
+                } else if(jComboBox2.getSelectedIndex()==1){
+                    BarcoPesquero barcoPesquero = new BarcoPesquero(jTextField1.getText(), TipoPesquero.CAMARON);
+                    barcos.add(barcoPesquero);
+                    JOptionPane.showMessageDialog(null, "¡Barco Agregado Exitosamente!");
+                } else if(jComboBox2.getSelectedIndex()==2){
+                    BarcoPesquero barcoPesquero = new BarcoPesquero(jTextField1.getText(), TipoPesquero.LANGOSTA);
+                    barcos.add(barcoPesquero);
+                    JOptionPane.showMessageDialog(null, "¡Barco Agregado Exitosamente!");
+                }
+            } else if(jComboBox1.getSelectedIndex()==2){
+                int limitePasajeros=Integer.parseInt(jTextField2.getText());
+                double precioBoleto=Double.parseDouble(jTextField3.getText());
+                BarcoPasajero barcoPasajero = new BarcoPasajero(jTextField1.getText(), limitePasajeros, precioBoleto);
+                barcos.add(barcoPasajero);
+                JOptionPane.showMessageDialog(null, "¡Barco Agregado Exitosamente!");
+            } else{
+                JOptionPane.showMessageDialog(null, "¡Tipo de Barco Inválido!");
+            }
+        }
     }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void jComboBox1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyReleased
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         if(jComboBox1.getSelectedIndex()==0){
            jLabel2.setVisible(false);
            jTextField1.setVisible(false);
+           jLabel2.setVisible(false);
+           jComboBox2.setVisible(false);
+           jTextField2.setVisible(false);
+           jLabel6.setVisible(false);
+           jTextField3.setVisible(false);
+           jLabel7.setVisible(false);
+           jLabel5.setVisible(false);
         }else if(jComboBox1.getSelectedIndex()==1){
            jLabel2.setVisible(true);
            jTextField1.setVisible(true);
+           jComboBox2.setVisible(true);
+           jLabel5.setVisible(true);
+           jTextField2.setVisible(false);
+           jLabel6.setVisible(false);
+           jTextField3.setVisible(false);
+           jLabel7.setVisible(false);
         }else{
-            
+           jLabel2.setVisible(true);
+           jLabel5.setVisible(true);
+           jTextField1.setVisible(true);
+           jTextField2.setVisible(true);
+           jLabel6.setVisible(true);
+           jTextField3.setVisible(true);
+           jLabel7.setVisible(true);
+           jLabel2.setVisible(false);
+           jComboBox2.setVisible(false);
         }
-    }//GEN-LAST:event_jComboBox1KeyReleased
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        int tecla = evt.getKeyChar();
+        boolean valido = tecla >= 48 && tecla <= 57;
+        if (!valido) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        int tecla = evt.getKeyChar();
+        boolean valido = tecla >= 48 && tecla <= 57 || tecla == 46;
+        if (!valido) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField3KeyTyped
 
     private Barco buscarBarco(String nombre) {
         for (Barco barcoNombre : barcos) {
@@ -323,63 +445,14 @@ public class MuelleSwing extends javax.swing.JFrame {
         return null;
     }
     
-    private void agregarBarco(String tipo) {
-        Scanner lector = new Scanner(System.in);
-        
-        System.out.print("Nombre del Barco: ");
-        String nombre = lector.nextLine().toUpperCase();
-        
-        if (buscarBarco(nombre) != null) {
-            System.out.println("El barco ya existe.");
-            return;
-        } else {
-            switch (tipo.toUpperCase()) {
-                case "PESQUERO":
-                    System.out.println("");
-                    System.out.println("Tipos: (Pez / Camaron / Langosta)");
-                    System.out.print("¿Qué tipo de barco pesquero?: ");
-                    String tipoPesquero = lector.nextLine().toUpperCase();
-                    
-                    if (tipoPesquero.equals("PEZ")) {
-                        BarcoPesquero barcoPesquero = new BarcoPesquero(nombre, TipoPesquero.PEZ);
-                        barcos.add(barcoPesquero);
-                        System.out.println("¡Barco Agregado Exitosamente!");
-                    } else if (tipoPesquero.equals("CAMARON")) {
-                        BarcoPesquero barcoPesquero = new BarcoPesquero(nombre, TipoPesquero.CAMARON);
-                        barcos.add(barcoPesquero);
-                        System.out.println("¡Barco Agregado Exitosamente!");
-                    } else if (tipoPesquero.equals("LANGOSTA")) {
-                        BarcoPesquero barcoPesquero = new BarcoPesquero(nombre, TipoPesquero.LANGOSTA);
-                        barcos.add(barcoPesquero);
-                        System.out.println("¡Barco Agregado Exitosamente!");
-                    } else {
-                        System.out.println("Tipo de barco pesquero no válido.");
-                    }
-                    System.out.println("");
-                    break;
-                    
-                case "PASAJERO":
-                    System.out.println("");
-                    System.out.print("Limite de Pasajeros: ");
-                    int limitePasajeros = lector.nextInt();
-                    
-                    System.out.print("Precio de Boleto: $. ");
-                    double precioBoleto = lector.nextDouble();
-                    
-                    BarcoPasajero barcoPasajero = new BarcoPasajero(nombre, limitePasajeros, precioBoleto);
-                    barcos.add(barcoPasajero);
-                    System.out.println("¡Barco Agregado Exitosamente!");
-                    System.out.println("");
-                    break;
-                    
-                default: 
-                    System.out.println("Tipo de barco inválido.");
-                    System.out.println("");
-                    break;
-            }
+    /*
+    DefaultComboBoxModel<String> aModel = new DefaultComboBoxModel<>();
+        Calendar calendar = Calendar.getInstance();
+        for (int i = 2000; i <= 2100; i++) {
+            aModel.addElement(String.valueOf(i));
         }
-    }
-    
+        FechaBox.setModel(aModel);
+    */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -429,11 +502,17 @@ public class MuelleSwing extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
