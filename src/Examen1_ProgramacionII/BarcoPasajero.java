@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 
 public final class BarcoPasajero extends Barco{
-    private String[] nombrePasajeros;
+   private String[] nombrePasajeros;
     private double precioBoleto;
     private int contadorPasajeros;
     
@@ -55,16 +55,17 @@ public final class BarcoPasajero extends Barco{
         return super.toString() + "\nCantidad de Pasajeros que compraron boleto: " + contadorPasajeros;
     }
     
-    public void listarPasajeros() {
-        listarPasajeros(0);
+    public String listarPasajeros() {
+        return listarPasajeros(new StringBuilder(), 0);
     }
     
-    private void listarPasajeros(int index) {
+    private String listarPasajeros(StringBuilder pasajerosInfo, int index) {
         if (index < nombrePasajeros.length) {
             if (nombrePasajeros[index] != null) {
-                System.out.println(index + 1 + ".- " + nombrePasajeros[index]);
+                pasajerosInfo.append(index + 1 + ".- " + nombrePasajeros[index] + "\n");
             } 
-            listarPasajeros(index + 1);
+            return listarPasajeros(pasajerosInfo, index + 1);
         }
+        return pasajerosInfo.toString();
     }
 }

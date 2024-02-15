@@ -1,6 +1,8 @@
 
 package Examen1_ProgramacionII;
 
+import javax.swing.JOptionPane;
+
 public final class BarcoPesquero extends Barco {
     private int pecesCapturados;
     private TipoPesquero tipoBarco;
@@ -13,7 +15,8 @@ public final class BarcoPesquero extends Barco {
     
     @Override
     public void agregarElemento() {
-        pecesCapturados =+ 1;
+        pecesCapturados++;
+        JOptionPane.showMessageDialog(null, "¡Elemento agregado exitosamente! \nElemento Actuales: " + pecesCapturados, "Elemento Agregado", JOptionPane.INFORMATION_MESSAGE);
     }
     
     @Override
@@ -26,5 +29,10 @@ public final class BarcoPesquero extends Barco {
     @Override
     public double precioElemento() {
         return tipoBarco.price;
+    }
+    
+    @Override
+    public String toString() {
+        return super.toString() + "\nCarga de: " + tipoBarco + "\nPeces Capturados: " + pecesCapturados;
     }
 }
