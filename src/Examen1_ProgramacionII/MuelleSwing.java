@@ -343,8 +343,15 @@ public class MuelleSwing extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        AgregarElemento.setVisible(true);
-        MenuPrincipal.setVisible(false);
+        String nombre = JOptionPane.showInputDialog(null, "Ingrese el nombre del barco: ", "Agregar Elemento", JOptionPane.OK_CANCEL_OPTION);
+        nombre = nombre.toUpperCase();
+        
+        if (nombre.isBlank() || nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Complete el campo de Nombre.", "Campo Incompleto", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (!nombre.isBlank() || !nombre.isEmpty()) {
+            muelle.agregarElemento(nombre);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

@@ -20,13 +20,21 @@ public final class BarcoPasajero extends Barco{
     @Override
     public void agregarElemento() {
         if (contadorPasajeros < nombrePasajeros.length) {
-            Scanner lector = new Scanner(System.in);
-            System.out.print("Nombre de Pasajero: ");
-            nombrePasajeros[contadorPasajeros] = lector.nextLine();
-            contadorPasajeros++;
+            String nombre = JOptionPane.showInputDialog(null, "Ingrese el nombre del pasajero: ", "Agregar Elemento", JOptionPane.OK_CANCEL_OPTION);
+            nombre = nombre.toUpperCase();
+             
+            if (nombre.isBlank() || nombre.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Complete el campo de Nombre.", "Campo Incompleto", JOptionPane.ERROR_MESSAGE);
+                return;
+            } else {
+                nombrePasajeros[contadorPasajeros] = nombre;
+                contadorPasajeros++;
+                JOptionPane.showMessageDialog(null, "¡Elemento agregado exitosamente! \nPasajeros Actuales: " + contadorPasajeros, "Elemento Agregado", JOptionPane.INFORMATION_MESSAGE);
+            }
+   
         } else {
-            System.out.println("              ¡ADVERTENCIA!               ");
-            System.out.println("El barco ya alcanzó su límite de pasajeros");
+            JOptionPane.showMessageDialog(null, "El barco ya alcanzó su límite de pasajeros.", "Advertencia", JOptionPane.ERROR_MESSAGE);
+            return;
         }
     }
         

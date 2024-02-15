@@ -1,6 +1,7 @@
 
 package Examen1_ProgramacionII;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
@@ -9,189 +10,132 @@ import javax.swing.JOptionPane;
 
 public class Muelle {
     private ArrayList<Barco> barcos;
+    private String tipoCarga, barcoLabel, nombreAgregar;
+    private int limitePasajeros;
+    private double precioBoleto;
+    private BarcoPesquero barcoPesquero;
+    private BarcoPasajero barcoPasajero;
     
     public Muelle() {
         barcos = new ArrayList<>();
     }
-    
-    public static void main(String[] args) {
-        Muelle muelle = new Muelle();
-        
-        Scanner lector = new Scanner(System.in);
 
-        int opcion=0;
-        
-        do {
-            System.out.println("===========MENÚ PRINCIPAL===========");
-            System.out.println("        1- AGREGAR BARCO            ");
-            System.out.println("        2- AGREGAR ELEMENTO         ");
-            System.out.println("        3- VACIAR BARCO             ");
-            System.out.println("        4- BARCOS POR FECHA         ");
-            System.out.println("        5- SALIR                    ");
-            System.out.println("====================================");
-            System.out.print("          Ingrese el Código: ");
-            opcion = lector.nextInt();
-            lector.nextLine();
-            
-            switch (opcion) {
-                case 1:
-                    System.out.println("");
-                    System.out.println("==========AGREGAR BARCO==========");
-                    System.out.println(" Tipos: (PESQUERO / PASAJERO)");
-                    System.out.print("Seleccione un tipo de barco: ");
-                    String tipoBarco = lector.nextLine();
-                    
-                    if (tipoBarco != null) {
-                        muelle.agregarBarco(tipoBarco);
-                    }
-                    System.out.println("");
-                    break;
-                    
-                case 2:
-                    System.out.println("");
-                    System.out.println("==========AGREGAR ELEMENTO==========");
-                    System.out.print("Nombre del Barco: ");
-                    String nombreBarco = lector.nextLine().toUpperCase();
-                    
-                    if (nombreBarco != null) {
-                        muelle.agregarElemento(nombreBarco);
-                    }
-                    System.out.println("");
-                    break;
-                
-                case 3:
-                    System.out.println("");
-                    System.out.println("==========VACIAR BARCO==========");
-                    System.out.print("Nombre del Barco: ");
-                    nombreBarco = lector.nextLine().toUpperCase();
-                    
-                    if (nombreBarco != null) {
-                        double total = muelle.vaciarBarco(nombreBarco);
-                        System.out.println("Total General: $. " + total);
-                    }
-                    System.out.println("");
-                    break;
-                    
-                case 4: 
-                    System.out.println("");
-                    System.out.println("==========BARCOS POR FECHA==========");
-                    System.out.print("Año: ");
-                    int año = lector.nextInt();
-                    
-                    if (año != -1) {
-                        muelle.barcosDesde(año);
-                    }
-                    System.out.println("");
-                    break;
-                    
-                default:
-                    System.out.println("");
-                    System.out.println("SALIENDO CON ÉXITO DEL PROGRAMA...");
-                    break;
-            }
-            
-        } while (opcion != 5);
+    public void setTipoCarga(String tipoCarga) {
+        this.tipoCarga = tipoCarga;
+    }
+
+    public void setLimitePasajeros(int limitePasajeros) {
+        this.limitePasajeros = limitePasajeros;
+    }
+
+    public void setPrecioBoleto(double precioBoleto) {
+        this.precioBoleto = precioBoleto;
+    }
+
+    public void setNombreAgregar(String nombreAgregar) {
+        this.nombreAgregar = nombreAgregar;
     }
     
-    private Barco buscarBarco(String nombre) {
+    public String getBarcoLabel() {
+        return barcoLabel;
+    }
+
+    public BarcoPesquero getBarcoPesquero() {
+        return barcoPesquero;
+    }
+
+    public BarcoPasajero getBarcoPasajero() {
+        return barcoPasajero;
+    }
+    
+    
+    public Barco buscarBarco(String nombre) {
         for (Barco barcoNombre : barcos) {
             if (barcoNombre.getNombre().equals(nombre)) {
+                if (barcoNombre instanceof BarcoPasajero) {
+                    barcoLabel = "Pasajero";
+                    barcoPasajero = (BarcoPasajero) barcoNombre;
+                } else if (barcoNombre instanceof BarcoPesquero) {
+                    barcoLabel = "Pesquero";
+                    barcoPesquero = (BarcoPesquero) barcoNombre;
+                }
                 return barcoNombre;
             }
         }
         return null;
     }
     
-    private void agregarBarco(String tipo) {
-        Scanner lector = new Scanner(System.in);
-        
-        System.out.print("Nombre del Barco: ");
-        String nombre = lector.nextLine().toUpperCase();
-        
-        if (buscarBarco(nombre) != null) {
-            System.out.println("El barco ya existe.");
+    public void agregarBarco(String tipo) {
+        if (buscarBarco(nombreAgregar) != null) {
+            JOptionPane.showMessageDialog(null, "El barco ya existe.", "Barco Existente", JOptionPane.ERROR_MESSAGE);
             return;
         } else {
             switch (tipo.toUpperCase()) {
                 case "PESQUERO":
-                    System.out.println("");
-                    System.out.println("Tipos: (Pez / Camaron / Langosta)");
-                    System.out.print("¿Qué tipo de barco pesquero?: ");
-                    String tipoPesquero = lector.nextLine().toUpperCase();
-                    
-                    if (tipoPesquero.equals("PEZ")) {
-                        BarcoPesquero barcoPesquero = new BarcoPesquero(nombre, TipoPesquero.PEZ);
+                    if (tipoCarga.equals("PEZ")) {
+                        BarcoPesquero barcoPesquero = new BarcoPesquero(nombreAgregar, TipoPesquero.PEZ);
                         barcos.add(barcoPesquero);
-                        System.out.println("¡Barco Agregado Exitosamente!");
-                    } else if (tipoPesquero.equals("CAMARON")) {
-                        BarcoPesquero barcoPesquero = new BarcoPesquero(nombre, TipoPesquero.CAMARON);
+                        JOptionPane.showMessageDialog(null, "¡Barco Agregado Exitosamente!", "Barco Agregado", JOptionPane.INFORMATION_MESSAGE);
+                    } else if (tipoCarga.equals("CAMARÓN")) {
+                        BarcoPesquero barcoPesquero = new BarcoPesquero(nombreAgregar, TipoPesquero.CAMARON);
                         barcos.add(barcoPesquero);
-                        System.out.println("¡Barco Agregado Exitosamente!");
-                    } else if (tipoPesquero.equals("LANGOSTA")) {
-                        BarcoPesquero barcoPesquero = new BarcoPesquero(nombre, TipoPesquero.LANGOSTA);
+                        JOptionPane.showMessageDialog(null, "¡Barco Agregado Exitosamente!", "Barco Agregado", JOptionPane.INFORMATION_MESSAGE);
+                    } else if (tipoCarga.equals("LANGOSTA")) {
+                        BarcoPesquero barcoPesquero = new BarcoPesquero(nombreAgregar, TipoPesquero.LANGOSTA);
                         barcos.add(barcoPesquero);
-                        System.out.println("¡Barco Agregado Exitosamente!");
+                        JOptionPane.showMessageDialog(null, "¡Barco Agregado Exitosamente!", "Barco Agregado", JOptionPane.INFORMATION_MESSAGE);
                     } else {
-                        System.out.println("Tipo de barco pesquero no válido.");
+                        JOptionPane.showMessageDialog(null, "Tipo de barco pesquero no válido.", "Barco Inválido", JOptionPane.ERROR_MESSAGE);
                     }
-                    System.out.println("");
                     break;
                     
                 case "PASAJERO":
-                    System.out.println("");
-                    System.out.print("Limite de Pasajeros: ");
-                    int limitePasajeros = lector.nextInt();
-                    
-                    System.out.print("Precio de Boleto: $. ");
-                    double precioBoleto = lector.nextDouble();
-                    
-                    BarcoPasajero barcoPasajero = new BarcoPasajero(nombre, limitePasajeros, precioBoleto);
+                    BarcoPasajero barcoPasajero = new BarcoPasajero(nombreAgregar, limitePasajeros, precioBoleto);
                     barcos.add(barcoPasajero);
-                    System.out.println("¡Barco Agregado Exitosamente!");
-                    System.out.println("");
+                    JOptionPane.showMessageDialog(null, "¡Barco Agregado Exitosamente!", "Barco Agregado", JOptionPane.INFORMATION_MESSAGE);
                     break;
                     
                 default: 
-                    System.out.println("Tipo de barco inválido.");
-                    System.out.println("");
+                    JOptionPane.showMessageDialog(null, "Tipo de barco inválido.", "Barco Inválido", JOptionPane.ERROR_MESSAGE);
                     break;
             }
         }
     }
     
-    private void agregarElemento(String nombre) {
-        Barco barcoEncontrado = buscarBarco(nombre);
-        if (barcoEncontrado != null) {
-            barcoEncontrado.agregarElemento();
-            System.out.println("¡Elemento Agregado Exitosamente!");
-        } else {
-            System.out.println("El barco '" + nombre + "' no existe.");
-        }
-    }
-    
-    private double vaciarBarco(String nombre) {
+    public void agregarElemento(String nombre) {
         Barco barcoEncontrado = buscarBarco(nombre);
         if (barcoEncontrado != null) {
             if (barcoEncontrado instanceof BarcoPasajero) {
-                System.out.println("Listado de Pasajeros: ");
-                ((BarcoPasajero) barcoEncontrado).listarPasajeros();
-                System.out.println("");
+                ((BarcoPasajero) barcoEncontrado).agregarElemento();
+            } else if (barcoEncontrado instanceof BarcoPesquero) {
+                ((BarcoPesquero) barcoEncontrado).agregarElemento();
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "El barco '" + nombre + "' no existe.", "Barco Inexistente", JOptionPane.ERROR_MESSAGE);
         }
-        return barcoEncontrado.vaciarCobrar();
     }
     
-    private void barcosDesde(int year) {
-        barcosDesdeRecursivo(year, 0);
+    public double vaciarBarco(String nombre) {
+        Barco barcoEncontrado = buscarBarco(nombre);
+        if (barcoEncontrado != null) {
+           return barcoEncontrado.vaciarCobrar();
+        }
+        return 0.00;
+    }
+    
+    public String barcosDesde(int year) {
+        return barcosDesde(new StringBuilder(), year, 0);
     }
 
-    private void barcosDesdeRecursivo(int year, int index) {
+    private String barcosDesde(StringBuilder pasajerosInfo, int year, int index) {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/YYYY");
         if (index < barcos.size()) {
             Barco barco = barcos.get(index);
             if (barco.getFechaCiruculacion().get(Calendar.YEAR) >= year) {
-                System.out.println("Nombre: " + barco.getNombre() + ", Fecha de Circulación: " + barco.getFechaCiruculacion().getTime());
+                pasajerosInfo.append(index + 1 + ". " + barco.getNombre() + " - " + formato.format(barco.getFechaCiruculacion().getTime()) + "\n");
             }
-            barcosDesdeRecursivo(year, index + 1);
+            return barcosDesde(pasajerosInfo, year, index + 1);
         }
+        return pasajerosInfo.toString();
     }
 }
