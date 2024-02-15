@@ -2,7 +2,6 @@
 package Examen1_ProgramacionII;
 
 import java.util.Calendar;
-import javax.swing.JOptionPane;
 
 public abstract class Barco {
     private String nombre;
@@ -30,3 +29,4 @@ public abstract class Barco {
     public abstract double vaciarCobrar();
     public abstract double precioElemento();
 }
+

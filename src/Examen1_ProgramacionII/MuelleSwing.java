@@ -1,22 +1,38 @@
-
 package Examen1_ProgramacionII;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 public class MuelleSwing extends javax.swing.JFrame {
+
     private ArrayList<Barco> barcos;
-    
+    private String tipoCarga, barcoLabel, nombreAgregar;
+    private int limitePasajeros;
+    private double precioBoleto;
+    private BarcoPesquero barcoPesquero;
+    private BarcoPasajero barcoPasajero;
+    public static Muelle muelle = new Muelle();
+
     public MuelleSwing() {
         barcos = new ArrayList<>();
-        
+
         initComponents();
         MenuPrincipal.setVisible(true);
         AgregarBarco.setVisible(false);
         AgregarElemento.setVisible(false);
         VaciarBarco.setVisible(false);
         BarcosPorFecha.setVisible(false);
+
+        DefaultComboBoxModel<String> añosModel = new DefaultComboBoxModel<>();
+        Calendar calendar = Calendar.getInstance();
+        for (int indice = 2024; indice <= 2034; indice++) {
+            añosModel.addElement(String.valueOf(indice));
+        }
+        jComboBox3.setModel(añosModel);
     }
 
     /**
@@ -58,8 +74,25 @@ public class MuelleSwing extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         VaciarBarco = new javax.swing.JPanel();
         jButton8 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jButton12 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         BarcosPorFecha = new javax.swing.JPanel();
+        jButton13 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 470));
@@ -300,6 +333,76 @@ public class MuelleSwing extends javax.swing.JFrame {
         });
         VaciarBarco.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 140, 40));
 
+        jLabel10.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("VACIAR BARCO");
+        VaciarBarco.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("TOTAL GENERADO");
+        VaciarBarco.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, -1, -1));
+
+        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField5.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        jTextField5.setForeground(new java.awt.Color(0, 0, 0));
+        VaciarBarco.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 200, -1));
+
+        jButton12.setBackground(new java.awt.Color(153, 0, 153));
+        jButton12.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        jButton12.setForeground(new java.awt.Color(255, 255, 255));
+        jButton12.setText("VACIAR");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        VaciarBarco.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 140, 40));
+
+        jLabel12.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("NOMBRE DEL BARCO:");
+        VaciarBarco.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        VaciarBarco.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 160, 40));
+
+        jLabel14.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        VaciarBarco.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 180, 40));
+
+        jLabel15.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("TIPO DE BARCO");
+        VaciarBarco.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(153, 0, 153));
+
+        jScrollPane1.setBackground(new java.awt.Color(153, 0, 153));
+        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(153, 0, 153));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+        );
+
+        VaciarBarco.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 400, 170));
+
         jPanel.add(VaciarBarco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 470));
 
         BarcosPorFecha.setBackground(new java.awt.Color(255, 204, 255));
@@ -307,6 +410,17 @@ public class MuelleSwing extends javax.swing.JFrame {
         BarcosPorFecha.setMinimumSize(new java.awt.Dimension(720, 470));
         BarcosPorFecha.setPreferredSize(new java.awt.Dimension(720, 470));
         BarcosPorFecha.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton13.setBackground(new java.awt.Color(153, 0, 153));
+        jButton13.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        jButton13.setForeground(new java.awt.Color(255, 255, 255));
+        jButton13.setText("BUSCAR");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        BarcosPorFecha.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 140, 40));
 
         jButton9.setBackground(new java.awt.Color(153, 0, 153));
         jButton9.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
@@ -318,6 +432,31 @@ public class MuelleSwing extends javax.swing.JFrame {
             }
         });
         BarcosPorFecha.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 140, 40));
+
+        jLabel16.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("BUSCAR BARCOS");
+        BarcosPorFecha.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
+
+        jLabel17.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("ELIJA LA FECHA:");
+        BarcosPorFecha.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
+
+        jComboBox3.setBackground(new java.awt.Color(153, 0, 153));
+        jComboBox3.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        jComboBox3.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", " ", " " }));
+        BarcosPorFecha.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 160, -1));
+
+        jTextArea2.setBackground(new java.awt.Color(153, 0, 153));
+        jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        jTextArea2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
+        BarcosPorFecha.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 670, 180));
 
         jPanel.add(BarcosPorFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 470));
 
@@ -343,10 +482,8 @@ public class MuelleSwing extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Muelle muelle = new Muelle();
         String nombre = JOptionPane.showInputDialog(null, "Ingrese el nombre del barco: ", "Agregar Elemento", JOptionPane.OK_CANCEL_OPTION);
-        
-        
+
         if (nombre.isBlank() || nombre.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Complete el campo de Nombre.", "Campo Incompleto", JOptionPane.ERROR_MESSAGE);
             return;
@@ -371,6 +508,9 @@ public class MuelleSwing extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         AgregarBarco.setVisible(false);
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
         MenuPrincipal.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -381,6 +521,10 @@ public class MuelleSwing extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         VaciarBarco.setVisible(false);
+        jTextArea1.setText("");
+        jLabel13.setText("");
+        jLabel14.setText("");
+        jTextField5.setText("");
         MenuPrincipal.setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -390,75 +534,63 @@ public class MuelleSwing extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        if (buscarBarco(jTextField1.getText()) != null) {
-            JOptionPane.showMessageDialog(null, "El barco ya existe.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            
-            return;
-        } else {
-            if (jComboBox1.getSelectedIndex() == 1) {
-                if (jComboBox2.getSelectedIndex() == 0) {
-                    BarcoPesquero barcoPesquero = new BarcoPesquero(jTextField1.getText(), TipoPesquero.PEZ);
-                    barcos.add(barcoPesquero);
-                    JOptionPane.showMessageDialog(null, "¡Barco Agregado Exitosamente!");
-                    jTextField1.setText("");
-                    jComboBox2.setSelectedIndex(0);
-                } else if (jComboBox2.getSelectedIndex() == 1) {
-                    BarcoPesquero barcoPesquero = new BarcoPesquero(jTextField1.getText(), TipoPesquero.CAMARON);
-                    barcos.add(barcoPesquero);
-                    JOptionPane.showMessageDialog(null, "¡Barco Agregado Exitosamente!");
-                    jTextField1.setText("");
-                    jComboBox2.setSelectedIndex(0);
-                } else if (jComboBox2.getSelectedIndex() == 2) {
-                    BarcoPesquero barcoPesquero = new BarcoPesquero(jTextField1.getText(), TipoPesquero.LANGOSTA);
-                    barcos.add(barcoPesquero);
-                    JOptionPane.showMessageDialog(null, "¡Barco Agregado Exitosamente!");
-                    jTextField1.setText("");
-                    jComboBox2.setSelectedIndex(0);
-                }
-            } else if (jComboBox1.getSelectedIndex() == 2) {
-                int limitePasajeros = Integer.parseInt(jTextField2.getText());
-                double precioBoleto = Double.parseDouble(jTextField3.getText());
-                BarcoPasajero barcoPasajero = new BarcoPasajero(jTextField1.getText(), limitePasajeros, precioBoleto);
-                barcos.add(barcoPasajero);
-                JOptionPane.showMessageDialog(null, "¡Barco Agregado Exitosamente!");
-                jTextField2.setText("");
-                jTextField3.setText("");
-            } else {
-                JOptionPane.showMessageDialog(null, "¡Tipo de Barco Inválido!");
-            }
+
+        String tipoBarco = jComboBox1.getSelectedItem().toString();
+        String nombre;
+
+        if (tipoBarco.equals("PESQUERO")) {
+            nombre = jTextField1.getText();
+            muelle.setTipoCarga(jComboBox2.getSelectedItem().toString().toString().toUpperCase());
+            muelle.setNombreAgregar(nombre);
+            muelle.agregarBarco(tipoBarco);
+        } else if (tipoBarco.equals("PASAJERO")) {
+            nombre = jTextField1.getText();
+            int limitePasajeros = Integer.parseInt(jTextField2.getText());
+            double precioBoleto = Double.parseDouble(jTextField3.getText());
+            muelle.setLimitePasajeros(limitePasajeros);
+            muelle.setPrecioBoleto(precioBoleto);
+            muelle.setNombreAgregar(nombre);
+            muelle.agregarBarco(tipoBarco);
         }
+
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jComboBox1.setSelectedIndex(0);
+        jComboBox2.setSelectedIndex(0);
+
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        if(jComboBox1.getSelectedIndex()==0){
-           jLabel2.setVisible(false);
-           jTextField1.setVisible(false);
-           jLabel2.setVisible(false);
-           jComboBox2.setVisible(false);
-           jTextField2.setVisible(false);
-           jLabel6.setVisible(false);
-           jTextField3.setVisible(false);
-           jLabel7.setVisible(false);
-           jLabel5.setVisible(false);
-        }else if(jComboBox1.getSelectedIndex()==1){
-           jLabel2.setVisible(true);
-           jTextField1.setVisible(true);
-           jComboBox2.setVisible(true);
-           jLabel5.setVisible(true);
-           jTextField2.setVisible(false);
-           jLabel6.setVisible(false);
-           jTextField3.setVisible(false);
-           jLabel7.setVisible(false);
-        }else{
-           jLabel2.setVisible(true);
-           jLabel5.setVisible(true);
-           jTextField1.setVisible(true);
-           jTextField2.setVisible(true);
-           jLabel6.setVisible(true);
-           jTextField3.setVisible(true);
-           jLabel7.setVisible(true);
-           jLabel2.setVisible(false);
-           jComboBox2.setVisible(false);
+        if (jComboBox1.getSelectedItem().toString().equals("‏‏‎ ‎")) {
+            jLabel2.setVisible(false);
+            jTextField1.setVisible(false);
+            jLabel2.setVisible(false);
+            jComboBox2.setVisible(false);
+            jTextField2.setVisible(false);
+            jLabel6.setVisible(false);
+            jTextField3.setVisible(false);
+            jLabel7.setVisible(false);
+            jLabel5.setVisible(false);
+        } else if (jComboBox1.getSelectedItem().toString().equals("PESQUERO")) {
+            jLabel2.setVisible(true);
+            jTextField1.setVisible(true);
+            jComboBox2.setVisible(true);
+            jLabel5.setVisible(true);
+            jTextField2.setVisible(false);
+            jLabel6.setVisible(false);
+            jTextField3.setVisible(false);
+            jLabel7.setVisible(false);
+        } else if (jComboBox1.getSelectedItem().toString().equals("PASAJERO")) {
+            jLabel2.setVisible(true);
+            jLabel5.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField2.setVisible(true);
+            jLabel6.setVisible(true);
+            jTextField3.setVisible(true);
+            jLabel7.setVisible(true);
+            jLabel2.setVisible(false);
+            jComboBox2.setVisible(false);
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
@@ -486,23 +618,39 @@ public class MuelleSwing extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
 
-    private Barco buscarBarco(String nombre) {
-        for (Barco barcoNombre : barcos) {
-            if (barcoNombre.getNombre().equals(nombre)) {
-                return barcoNombre;
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        String nombre = jTextField5.getText();
+
+        if (nombre.isBlank() || nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "¡Se necesita rellenar el dato del Nombre del Barco!", "Campo Incompleto", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (!nombre.isBlank() || !nombre.isEmpty()) {
+            muelle.buscarBarco(nombre);
+            jLabel13.setText(muelle.getBarcoLabel());
+
+            if (muelle.getBarcoLabel().equalsIgnoreCase("PASAJERO")) {
+                jTextArea1.setText("DATOS DEL BARCO: \n" + muelle.getBarcoPasajero().toString() + "\n\nLISTA DE PASAJEROS: \n" + muelle.getBarcoPasajero().listarPasajeros());
+            } else if (muelle.getBarcoLabel().equalsIgnoreCase("PESQUERO")) {
+                jTextArea1.setText("DATOS DEL BARCO: \n" + muelle.getBarcoPesquero().toString());
             }
+
+            double total = muelle.vaciarBarco(nombre);
+            jLabel14.setText("LPS. " + String.valueOf(total));
         }
-        return null;
-    }
-    
-    /*
-    DefaultComboBoxModel<String> aModel = new DefaultComboBoxModel<>();
-        Calendar calendar = Calendar.getInstance();
-        for (int i = 2000; i <= 2100; i++) {
-            aModel.addElement(String.valueOf(i));
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        int fecha = Integer.parseInt(jComboBox3.getSelectedItem().toString());
+
+        String mostrar = muelle.barcosDesde(fecha);
+
+        if (mostrar == null) {
+            jTextArea2.setText("NO SE ENCONTRARON BARCOS");
+        } else {
+            jTextArea2.setText("LISTA DE BARCOS: \n" + mostrar);
         }
-        FechaBox.setModel(aModel);
-    */
+    }//GEN-LAST:event_jButton13ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -544,6 +692,8 @@ public class MuelleSwing extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -554,7 +704,16 @@ public class MuelleSwing extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -564,9 +723,15 @@ public class MuelleSwing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }

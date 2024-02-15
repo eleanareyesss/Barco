@@ -76,7 +76,7 @@ public class Muelle {
                         BarcoPesquero barcoPesquero = new BarcoPesquero(nombreAgregar, TipoPesquero.PEZ);
                         barcos.add(barcoPesquero);
                         JOptionPane.showMessageDialog(null, "¡Barco Agregado Exitosamente!", "Barco Agregado", JOptionPane.INFORMATION_MESSAGE);
-                    } else if (tipoCarga.equals("CAMARÓN")) {
+                    } else if (tipoCarga.equals("CAMARON")) {
                         BarcoPesquero barcoPesquero = new BarcoPesquero(nombreAgregar, TipoPesquero.CAMARON);
                         barcos.add(barcoPesquero);
                         JOptionPane.showMessageDialog(null, "¡Barco Agregado Exitosamente!", "Barco Agregado", JOptionPane.INFORMATION_MESSAGE);
@@ -85,7 +85,7 @@ public class Muelle {
                         barcos.add(barcoPesquero);
                         JOptionPane.showMessageDialog(null, "¡Barco Agregado Exitosamente!", "Barco Agregado", JOptionPane.INFORMATION_MESSAGE);
                     } else {
-                        JOptionPane.showMessageDialog(null, "Tipo de barco pesquero no válido.", "Barco Inválido", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Tipo de barco no válido.", "Barco Inválido", JOptionPane.ERROR_MESSAGE);
                     }
                     break;
                     
@@ -128,7 +128,7 @@ public class Muelle {
     }
 
     private String barcosDesde(StringBuilder pasajerosInfo, int year, int index) {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/YYYY");
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         if (index < barcos.size()) {
             Barco barco = barcos.get(index);
             if (barco.getFechaCiruculacion().get(Calendar.YEAR) >= year) {

@@ -29,11 +29,11 @@ public final class BarcoPasajero extends Barco{
             } else {
                 nombrePasajeros[contadorPasajeros] = nombre;
                 contadorPasajeros++;
-                JOptionPane.showMessageDialog(null, "¡Elemento agregado exitosamente! \nPasajeros Actuales: " + contadorPasajeros, "Elemento Agregado", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "¡Elemento agregado exitosamente! \nPasajero(s) Actuales: " + contadorPasajeros, "Elemento Agregado", JOptionPane.INFORMATION_MESSAGE);
             }
    
         } else {
-            JOptionPane.showMessageDialog(null, "El barco ya alcanzó su límite de pasajeros.", "Advertencia", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El barco ya alcanzó su límite de pasajeros.", "LIMITE ALCANZADO", JOptionPane.ERROR_MESSAGE);
             return;
         }
     }
@@ -52,7 +52,7 @@ public final class BarcoPasajero extends Barco{
     
     @Override
     public String toString() {
-        return super.toString() + "\nCantidad de Pasajeros que compraron boleto: " + contadorPasajeros;
+        return super.toString() + "\nCantidad de Pasajeros que compraron boleto(s): " + contadorPasajeros;
     }
     
     public String listarPasajeros() {

@@ -16,7 +16,7 @@ public final class BarcoPesquero extends Barco {
     @Override
     public void agregarElemento() {
         pecesCapturados++;
-        JOptionPane.showMessageDialog(null, "¡Elemento agregado exitosamente! \nElemento Actuales: " + pecesCapturados, "Elemento Agregado", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "¡Elemento agregado exitosamente! \nElemento(s) Actuales: " + pecesCapturados, "Elemento Agregado", JOptionPane.INFORMATION_MESSAGE);
     }
     
     @Override
